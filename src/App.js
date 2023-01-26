@@ -6,7 +6,7 @@ class Dog extends React.Component {
   constructor(){
     super();
     this.state = {
-      imgURL: "",
+      imgURL: "https://picsum.photos/id/237/200/300",
       breed: [""],
       select: ""
     }
@@ -87,7 +87,7 @@ class Dog extends React.Component {
     
     return(
       <div className='App'>
-        <h1>The Dogs World</h1>
+        <h1 className='heading'>The Dogs World</h1>
 
         <p>Choose a dog from the drop down menu and click submit.</p>
         <select value={select} onChange={this.handleSelect}>
@@ -100,7 +100,7 @@ class Dog extends React.Component {
         
         <p></p>
         <div id="img">
-          <img alt="dog" src={imgURL} />
+          <img alt="Dog" src={imgURL} />
         </div>
 
         <p></p>
