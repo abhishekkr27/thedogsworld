@@ -1,6 +1,42 @@
 import axios from 'axios';
 import React from 'react';
 import './App.css';
+import styled from "styled-components";
+
+const theme = {
+  blue: {
+    default: "#3f51b5",
+    hover: "#283593"
+  },
+  pink: {
+    default: "#e91e63",
+    hover: "#ad1457"
+  }
+};
+
+const Button = styled.button`
+  background-color: ${(props) => theme[props.theme].default};
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  outline: 0;
+  text-transform: uppercase;
+  margin: 10px 0px;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px lightgray;
+  transition: ease background-color 250ms;
+  &:hover {
+    background-color: ${(props) => theme[props.theme].hover};
+  }
+  &:disabled {
+    cursor: default;
+    opacity: 0.7;
+  }
+`;
+
+Button.defaultProps = {
+  theme: "blue"
+};
 
 class Dog extends React.Component {
   constructor(){
@@ -90,13 +126,13 @@ class Dog extends React.Component {
         <h1 className='heading'>The Dogs World</h1>
 
         <p>Choose a dog from the drop down menu and click submit.</p>
-        <select value={select} onChange={this.handleSelect}>
+        <select className='select' value={select} onChange={this.handleSelect}>
           {breed.map(e => 
             <option value={e}> {e} </option>
           )}
         </select>
 
-        <button id="submit" disabled={!select} onClick={this.getDogImage}>submit</button>
+        <Button id="submit" disabled={!select} onClick={this.getDogImage}>submit</Button>
         
         <p></p>
         <div id="img">
@@ -104,9 +140,9 @@ class Dog extends React.Component {
         </div>
 
         <p></p>
-        <p>Breed: {select}</p>
+        <p style={{textTransform: "uppercase"}}>Breed: {select}</p>
         <p> Or click the random button for a random dog.</p>
-        <button onClick={this.getRandomImage}>random</button>
+        <Button onClick={this.getRandomImage}>random</Button>
       </div>
     )
   }

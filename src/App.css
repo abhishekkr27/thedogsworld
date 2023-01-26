@@ -11,3 +11,11 @@
 .heading {
   text-decoration: underline;
 }
+
+.select {
+  text-align: center;
+  padding: 5px 0px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
